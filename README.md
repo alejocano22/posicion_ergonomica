@@ -1,7 +1,7 @@
 # posicion_ergonomica
-# Proyecto Integrador 2
+## Proyecto Integrador 2
 Universidad EAFIT
-# Estudiantes
+## Estudiantes
 - Alejandro Cano Múnera
 - Luis Javier Palacio Mesa
 - Sebastián Giraldo Gómez

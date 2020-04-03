@@ -1,4 +1,4 @@
-# posicion_ergonomica
+# ERGONOMIA
 ## Proyecto Integrador 2
 Universidad EAFIT
 ## Estudiantes

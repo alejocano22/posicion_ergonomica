@@ -1,3 +1,28 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.carousel-inner img {
+
+  max-height: 350px;
+}
+.contenedor .contenedor-formulario {
+  width: 400px;
+}
+.contenedor .download {
+  background: #1081ff;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.contenedor .download a {
+  text-decoration: underline;
+  color: #fff;
+}
+
 .sidenav-container {
   height: 100%;
 }
@@ -21,6 +46,8 @@
 }
 
 .video {
+  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

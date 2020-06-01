@@ -1,8 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Dashboard</a>
@@ -16,40 +20,86 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>ErgonomIA</span>
     </mat-toolbar>
-    
+
     <mat-card>
-      <br>
-      <ng-container>   
-       
-        <div class="upload-btn-wrapper">
-          <button class="btn">Seleccionar video</button>
-          <input type="file" name="myfile" />
-        </div> 
-      </ng-container> 
-  
+      <br />
+      <ng-container>
+        <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+          <div class="upload-btn-wrapper">
+            <label class="file-label">
+              <button class="btn">Seleccionar video</button>
+              <input
+                class="file-input"
+                type="file"
+                formControlName="archivo"
+                (change)="cambioArchivo($event)"
+              />
+              <span class="file-name">
+                {{ mensajeArchivo }}
+              </span>
+            </label>
+          </div>
+          <progress
+            *ngIf="porcentaje > 0 && porcentaje < 100"
+            class="progress is-large is-success"
+            value="{{ porcentaje }}"
+            max="100"
+            >{{ porcentaje }}%</progress
+          >
+          <br />
+          <button
+            class="btn"
+            [ngClass]="{
+              button: true,
+              'is-success': true,
+              'is-large': true,
+              'is-loading': porcentaje > 0 && porcentaje < 100
+            }"
+            [disabled]="
+              !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+            "
+          >
+            Subir archivo
+          </button>
+        </form>
         <br>
-        <br>
-        <mat-divider></mat-divider>
-        <br>
-        <div class="content video">
-        <mat-video #video src="https://ak5.picdn.net/shutterstock/videos/1035217655/preview/stock-footage-athletic-beautiful-woman-does-overhead-deadlift-with-a-barbell-in-the-gym-gorgeous-female.webm" title="Procesando video" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="false" color="accent" spinner="spin"></mat-video>  
+        <mat-progress-bar *ngIf="status" mode="indeterminate"></mat-progress-bar>
+      </ng-container>
+
+      <br />
+      <br />
+      <mat-divider></mat-divider>
+      <br />
+      <div class="content video" *ngIf="data.video">
+        <mat-video
+          #video
+          src="{{ data.video }}"
+          title="ErgonomIA"
+          [autoplay]="true"
+          [preload]="true"
+          [fullscreen]="true"
+          [download]="false"
+          color="accent"
+          spinner="spin"
+        ></mat-video>
       </div>
-        <br>
-        <mat-divider></mat-divider>
-        <h3>Riesgos encontrados</h3>
-        <mat-carousel
+      <br />
+      <mat-divider></mat-divider>
+      <h3>Riesgos encontrados</h3>
+      <mat-carousel
         timings="250ms ease-in"
         [autoplay]="true"
         interval="5000"
         color="#000000"
         maxWidth="auto"
-
-        proportion="25"
+        maxHeight="auto"
+        proportion="50"
         slides="5"
         [loop]="true"
         [hideArrows]="false"
@@ -61,15 +111,11 @@
         <mat-carousel-slide
           #matCarouselSlide
           *ngFor="let slide of slides; let i = index"
-          [image]="slide.image"
-          [hideOverlay]="true"
-        >
-        <div class="content video">
-          <img [src]="slide.src">
-      </div>
-      </mat-carousel-slide>
+          [image]="slide.src"
+          [hideOverlay]="true">
+         
+        </mat-carousel-slide>
       </mat-carousel>
-
     </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>

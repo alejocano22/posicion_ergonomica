@@ -14,9 +14,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatVideoModule } from 'mat-video';
-import {MatCardModule} from '@angular/material/card';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-
+import { MatCardModule } from '@angular/material/card';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,15 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     VideoResultComponent
   ],
   imports: [
+    HttpClientModule,
+    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    ReactiveFormsModule,
+    MaterialFileInputModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressBarModule,
     MatCarouselModule.forRoot(),
     MatCardModule,
     MatVideoModule,

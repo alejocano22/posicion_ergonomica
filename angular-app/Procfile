@@ -1,0 +1,1 @@
+web: node angular-app/dist/index.js

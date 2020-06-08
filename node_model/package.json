@@ -1,0 +1,25 @@
+{
+  "name": "openposejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.1",
+    "@tensorflow/tfjs": "^1.7.4",
+    "@tensorflow/tfjs-node": "^1.7.4",
+    "atob": "^2.1.2",
+    "base64-img": "^1.0.4",
+    "blob": "^0.1.0",
+    "botkit": "^4.8.1",
+    "btoa": "^1.2.1",
+    "canvas": "^2.6.1",
+    "ffmpeg": "0.0.4",
+    "image-js": "^0.21.9",
+    "rollup": "^2.9.1"
+  }
+}
